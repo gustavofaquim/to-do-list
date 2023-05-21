@@ -1,0 +1,26 @@
+<%- include('template/header'); %>
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <div class="todo">
+           
+            <a href="/add" class="btn btn-add"><i class="fa-solid fa-circle-plus"></i></a>
+
+            <ul class="todo-list">
+                <% todoTasks.forEach(details => { %>
+                <li class="todo-list-item">
+
+                    <div class="todo-list-item-name"><%= details.title %></div>
+                    <a href="/edit/<%= details._id %>" class="edit">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    
+                    <a href="/remove/<%= details._id %>" class="remove">
+                        <i class="fa-solid fa-xmark"></i>
+                    </a>
+                
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+<%- include('template/footer'); %>

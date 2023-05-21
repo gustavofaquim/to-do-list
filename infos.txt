@@ -1,0 +1,27 @@
+npm init -> iniciar novo projeto com o Node
+
+
+## Instalando os pacotes
+
+ -> Instalação do Express, mongoose, ejs e dotenv.
+
+        npm install --save express mongoose ejs dotenv
+
+  -> Instalação do nodemon
+        npm install --save-dev nodemon
+
+
+## Configurando Nodemon
+    Inserir a linha no arquivo package.json dentro de scripts
+        "start": "nodemon index.js" -> npm start (inicia o nodemon)
+
+## Conectando ao banco de dados
+    -> Criar uma conta no https://www.mongodb.com/try
+    -> criar usuário para acessar o banco ( senha: ldisE8EwMabCagBC)
+    -> permitir conexão no IP
+
+
+
+https://medium.com/@diogo.fg.pinheiro/simple-to-do-list-app-with-node-js-and-mongodb-chapter-2-3780a1c5b039
+
+https://www.youtube.com/watch?v=sTZ6tTkFjR8
