@@ -20,16 +20,19 @@ class TaskController{
             title: req.body.title,
             content: req.body.content
         });
+        
         try{
             await todoTask.save();
             console.log(todoTask)
+            //resp.json({message: 'Formulário enviado com sucesso!'})
             resp.redirect('/');
         } catch(err){
             console.log(err)
-            resp.redirect("/");
+            //resp.json({message: 'Deu erro!'})
+            resp.redirect('/');
     
         }
-        //console.log(req.body);
+        
     }
 
     add(req, res){
@@ -52,7 +55,7 @@ class TaskController{
         )
     }
 
-    delete(req, res){
+    async delete(req, res){
         const id = req.params.id;
         TodoTask.findOneAndRemove(id)
         .then(

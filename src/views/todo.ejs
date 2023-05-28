@@ -1,26 +1,106 @@
 <%- include('template/header'); %>
-    <div class="todo-container">
-        <h2>To-Do List</h2>
-        <div class="todo">
-           
-            <a href="/add" class="btn btn-add"><i class="fa-solid fa-circle-plus"></i></a>
+        
+    <div class="row">
+        <div class="col central-menu">
+            <a href="#" class="btn btn-add" data-toggle="modal" data-target="#ModalAdiciona"><i class="fa-solid fa-circle-plus"></i></a>
+        </div>
 
-            <ul class="todo-list">
-                <% todoTasks.forEach(details => { %>
-                <li class="todo-list-item">
 
-                    <div class="todo-list-item-name"><%= details.title %></div>
-                    <a href="/edit/<%= details._id %>" class="edit">
-                        <i class="fa-solid fa-pen"></i>
-                    </a>
-                    
-                    <a href="/remove/<%= details._id %>" class="remove">
-                        <i class="fa-solid fa-xmark"></i>
-                    </a>
+        <!-- Modal -->
+        <div class="modal fade" id="ModalAdiciona" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-tarefa">
+                <form id='formAdd' method="POST">
+                <div class="modal-header">
+
+                    <input type="text" placeholder="Título" name="title" required>
                 
-                </li>
-                <% }) %>
-            </ul>
+
+                </div>
+                <div class="modal-body">
+                    <textarea name="content" id="content" placeholder="Conteúdo"></textarea>
+                  
+                </div>
+                <div class="modal-footer">
+                    <button type="submit">Confirm</button>
+                    <a href="/" class="cancel">Cancel</a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <div class="card-tarefas">
+                
+                <div>
+                    <% todoTasks.forEach(details => { %>
+                    <div class="lista-item" id='lista-item'>
+                        
+                        <div class="lista-item-corpo">
+                            <div class="lista-item-titulo"><%= details.title %></div>
+                        
+                            <div class="lista-item-conteudo" data-toggle="modal" data-target="#ModalTarefa-<%= details._id %>"><%= details.content %>
+                            
+                                <div class="lista-item-menu btn-group" role="group">
+                                   
+                                    <div class="btn-group btn-menu" role="group">
+                                        <a id="btnGroupDrop1"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <a href="/edit/<%= details._id %>" class="edit dropdown-item">
+                                                <i class="fa-solid fa-pen"></i> Editar
+                                            </a>
+                                         
+                                            <a href="/remove/<%= details._id %>" class="remove dropdown-item">
+                                                <i class="fa-solid fa-xmark"></i> Excluir
+                                            </a> 
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>                   
+                    </div>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="ModalTarefa-<%= details._id %>" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content modal-tarefa">
+                            <form action="/edit/<%= details._id %>" method="POST">
+                            <div class="modal-header">
+        
+                                <input type="text" value="<%= details.title %>" id="id="TituloModalCentralizado"" name="title">
+                            
+
+                            </div>
+                            <div class="modal-body">
+                                <textarea name="content" id="content" > <%= details.content %></textarea>
+                              
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit">Confirm</button>
+                                <a href="/" class="cancel">Cancel</a>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <% }) %>
+            </div>
         </div>
     </div>
+    
 <%- include('template/footer'); %>

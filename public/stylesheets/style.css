@@ -1,19 +1,19 @@
 
 html {
-    --text-color-normal: #0a244d;
-    --text-color-light: #8cabd9;
+    --text-color-normal: #0a244d !important;
+    --text-color-light: #8cabd9 !important;
 }
   
 html[data-theme='dark'] {
-    --text-color-normal: hsl(210, 10%, 62%);
-    --text-color-light: hsl(210, 15%, 35%);
-    --text-color-richer: hsl(210, 50%, 72%);
-    --text-color-highlight: hsl(25, 70%, 45%);
+    --text-color-normal: hsl(210, 10%, 62%) !important;
+    --text-color-light: hsl(210, 15%, 35%) !important;
+    --text-color-richer: hsl(210, 50%, 72%) !important;
+    --text-color-highlight: hsl(25, 70%, 45%) !important;
 }
 
 body {
-    background-color: black;
-    color: white;
+    background-color: #1a1b1d !important;
+    color: white !important;
   }
   @media screen and (prefers-color-scheme: dark) {
     body {
@@ -29,29 +29,33 @@ body {
 }
 
 
-
-.todo-container {
+.card-principal {
     color: white;
-    position: absolute;
-    top:50%;
-    left: 50%;
+    margin-top: 10% !important;
     padding: 20px;
-    width: 600px;
-    transform: translate(-50%,-50%);
-    background: rgba(255, 255, 255, 0.1);
+    /*background: rgba(172, 21, 21, 0.1) !important;*/
     border-radius: 20px;
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.todo {
-    width: 400px;
-    text-align: center;
+.card-principal h2 {
+    padding: 10px;
+    font-size: 2em;
 }
 
-.todo-container h2 {
-    padding: 10px;
+.card-tarefas {
+    width: 100%;
+    text-align: center;
+    /*border: 1px solid blue;*/
+}
+
+
+
+.central-menu{
+    text-align: center;
+}
+.central-menu i{
     font-size: 2em;
 }
 
@@ -72,43 +76,51 @@ body {
     background-color: rgb(51, 212, 100);
 }
 
-.todo-container ul {
+.card-principal ul {
     list-style: none;
 }
 
-.todo-list-item {
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: row;
-    text-align: left;
+.card-principal h2{
+    text-align: center;
 }
 
-.todo-list-item form {
+
+.lista-item {
+    padding: 10px;
+    display: inline-flex;
+    margin-top: 10px;
+    border: none;
+    width: 300px;
+}
+
+
+.lista-item form {
     width: 100%;
     display: flex;
 }
 
-.todo-list-item input {
+.lista-item input {
     flex-grow: 2;
     margin-right: 20px;
     border: none;
     border-radius: 5px;
 }
 
-.todo-list-item button {
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px;
-    background-color: rgb(51, 212, 100);
+.btn-group{
+    display: block !important;
 }
 
-.todo-list-item .cancel {
+.btn-menu a{
+    padding: 10px;
+}
+
+.btn-menu a:focos{
+    box-shadow: 0 0 0 0 !important;
+    outline: 0 !important;
+}
+
+
+.lista-item .cancel {
     color: white;
     text-decoration: none;
     border: none;
@@ -119,22 +131,81 @@ body {
     margin-left: 5px;
 }
 
-.todo-list-item div {
+.lista-item div {
     flex-grow: 2;
 }
 
-.todo-list-item .edit {
-    color : rgb(143, 233, 58);
+.lista-item .edit {
+    color : rgb(39, 147, 219);
     margin-right: 10px;
     cursor:pointer;
     text-decoration: none;
 }
 
-.todo-list-item .remove {
+.lista-item .remove {
     color : rgb(243, 96, 96);
     margin-right: 5px;
     cursor:pointer;
     text-decoration: none;
+}
+
+.lista-item-corpo{
+    display: block;
+}
+
+
+
+.lista-item-titulo{
+  font-weight: bold;
+}
+
+.lista-item-conteudo{
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #202124;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.lista-item-conteudo:hover{
+    cursor: pointer;
+}
+
+.modal-tarefa{
+    border-radius: 5px;
+    background: #202124 !important;
+    text-align: left;
+    transition-duration: 0.218s;
+    box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.37);
+}
+
+
+.modal-tarefa .modal-header, .modal-footer{
+    border-bottom: 0px solid !important;
+    border-top:  0px solid !important;
+}
+
+.modal-tarefa input, textarea{
+    background-color: transparent !important;
+    border: 0px solid !important;
+    color: #FFFFFF !important;
+}
+
+.modal-tarefa textarea{
+    width: 100% !important;
+    height: 100% !important;
+    resize: none !important;
+}
+
+.modal-tarefa input:focus, textarea:focus{
+    box-shadow: 0 0 0 0 !important;
+    outline: 0 !important;
+}
+
+.lista-item-menu{
+    text-align: right;
 }
 
 .btn-add{

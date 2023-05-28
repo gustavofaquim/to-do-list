@@ -21,8 +21,8 @@ dotenv.config();
 
 
 
-app.use(express.urlencoded({ extended: true })); // Extrair dados do formulário e adicionar ao body
-//app.use(express.json());
+app.use(express.urlencoded({ extended: false })); // Extrair dados do formulário e adicionar ao body
+app.use(express.json());
 
 
 //Conexão com o banco
@@ -50,7 +50,8 @@ app
     .post(TaskController.update)
 //app.get('/edit/:id', TaskController.edit)
 //app.put('/edit/:id', TaskController.update)
-app.delete('/remove/:id', TaskController.delete)
+//app.delete('/remove/:id', TaskController.delete) -> chamando assim não funciona
+app.get('/remove/:id', TaskController.delete)
 
 
 
