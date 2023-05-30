@@ -55,14 +55,14 @@ class TaskController{
         )
     }
 
-    async delete(req, res){
+    delete(req, res){
         const id = req.params.id;
         TodoTask.findOneAndRemove(id)
         .then(
             () => res.redirect('/'),
             err => res.send(500,err)
         )
-    }
+    } // Em alguns casos, está deletando o usuário errado.
 }
 
 // padrão Singleton
