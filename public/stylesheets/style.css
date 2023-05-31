@@ -1,4 +1,6 @@
 
+
+
 html {
     --text-color-normal: #0a244d !important;
     --text-color-light: #8cabd9 !important;
@@ -159,7 +161,7 @@ body {
   font-weight: bold;
 }
 
-.lista-item-conteudo{
+.card-item-customizado{
     padding: 10px;
     margin-top: 10px;
     border: none;

@@ -47,26 +47,28 @@
                         <div class="lista-item-corpo">
                             <div class="lista-item-titulo"><%= details.title %></div>
                         
-                            <div class="lista-item-conteudo" data-toggle="modal" data-target="#ModalTarefa-<%= details._id %>"><%= details.content %>
-                            
+                            <div class="card-item-customizado">
+                                <div class="lista-item-conteudo" data-toggle="modal" data-target="#ModalTarefa-<%= details._id %>"><%= details.content %>
+                                </div>
+                                
                                 <div class="lista-item-menu btn-group" role="group">
-                                   
+                                    
                                     <div class="btn-group btn-menu" role="group">
                                         <a id="btnGroupDrop1"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <a href="/edit/<%= details._id %>" class="edit dropdown-item">
+                                        <!--  <a href="/edit/<%= details._id %>" class="edit dropdown-item">
                                                 <i class="fa-solid fa-pen"></i> Editar
-                                            </a>
-                                         
+                                            </a>-->
+                                        
                                             <a href="/remove/<%= details._id %>" class="remove dropdown-item">
                                                 <i class="fa-solid fa-xmark"></i> Excluir
                                             </a> 
                                         </div>
                                     </div>
-                                </div>  
-                            </div>
+                                </div>
+                            </div>  
                         </div>                   
                     </div>
 
