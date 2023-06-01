@@ -9,7 +9,7 @@ class TaskController{
        
         try{
             const tasks =  await TodoTask.find();
-            res.render("todo.ejs", {todoTasks: tasks});
+            res.render("todo.ejs", {todoTasks: tasks, });
         } catch (err){
             res.status(500).json(err)
         }
@@ -23,9 +23,13 @@ class TaskController{
         
         try{
             await todoTask.save();
-            console.log(todoTask)
             //resp.json({message: 'Formulário enviado com sucesso!'})
-            resp.redirect('/');
+            
+            //resp.redirect('/');
+            
+            const tasks =  await TodoTask.find();
+            resp.json(tasks)
+            //resp.render("todo.ejs", {todoTasks: tasks});
         } catch(err){
             console.log(err)
             //resp.json({message: 'Deu erro!'})

@@ -1,5 +1,5 @@
 <%- include('template/header'); %>
-        
+<script src="/static/functions/list.js"></script>
     <div class="row">
         <div class="col central-menu">
             <a href="#" class="btn btn-add" data-toggle="modal" data-target="#ModalAdiciona"><i class="fa-solid fa-circle-plus"></i></a>
@@ -41,6 +41,7 @@
             <div class="card-tarefas">
                 
                 <div>
+                    <script> desenharLista(<%todoTasks%>)</script>
                     <% todoTasks.forEach(details => { %>
                     <div class="lista-item" id='lista-item'>
                         

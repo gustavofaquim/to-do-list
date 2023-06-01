@@ -22,8 +22,9 @@ form.addEventListener('submit', function (event) {
     })
     .then(response => response.json())
     .then(data => {
-        //console.log(data);
-        atualizarListagem();
+        let lista = data;
+        console.log(data);
+        
     })
     .catch(error => {
         console.error(error);
