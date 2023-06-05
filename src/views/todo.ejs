@@ -1,6 +1,7 @@
 <%- include('template/header'); %>
-<script src="/static/functions/list.js"></script>
+
     <div class="row">
+        
         <div class="col central-menu">
             <a href="#" class="btn btn-add" data-toggle="modal" data-target="#ModalAdiciona"><i class="fa-solid fa-circle-plus"></i></a>
         </div>
@@ -40,8 +41,8 @@
         <div class="col">
             <div class="card-tarefas">
                 
-                <div>
-                    <script> desenharLista(<%todoTasks%>)</script>
+                <div id="lista-dados">
+                    
                     <% todoTasks.forEach(details => { %>
                     <div class="lista-item" id='lista-item'>
                         
@@ -59,13 +60,9 @@
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <!--  <a href="/edit/<%= details._id %>" class="edit dropdown-item">
-                                                <i class="fa-solid fa-pen"></i> Editar
-                                            </a>-->
-                                        
-                                            <a href="/remove/<%= details._id %>" class="remove dropdown-item">
-                                                <i class="fa-solid fa-xmark"></i> Excluir
-                                            </a> 
+                                            
+                                            <button class="remove dropdown-item btn-remove" id='<%= details._id %>'> <i class="fa-solid fa-xmark"></i> Excluir</button>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -105,5 +102,6 @@
             </div>
         </div>
     </div>
+    <script src="/static/functions/list.js"></script>
     
 <%- include('template/footer'); %>

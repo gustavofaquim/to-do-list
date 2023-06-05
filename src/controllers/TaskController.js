@@ -28,7 +28,8 @@ class TaskController{
             //resp.redirect('/');
             
             const tasks =  await TodoTask.find();
-            resp.json(tasks)
+            resp.render('lista-dados', {tasks});
+            //resp.json(tasks)
             //resp.render("todo.ejs", {todoTasks: tasks});
         } catch(err){
             console.log(err)
@@ -60,7 +61,8 @@ class TaskController{
     }
 
     delete(req, res){
-        const id = req.params.id;
+        const id = req.body.title;
+
         TodoTask.findOneAndRemove({_id: id})
         .then(
             () => res.redirect('/'),

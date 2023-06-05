@@ -20,13 +20,15 @@ form.addEventListener('submit', function (event) {
             'Content-Type': 'application/json'
           }
     })
-    .then(response => response.json())
+    //.then(response => response.json())
     .then(data => {
-        let lista = data;
-        console.log(data);
+        $('#lista-dados').html(data.html);
         
     })
     .catch(error => {
         console.error(error);
     })
+
+    // Chamada inicial para atualizar a lista de dados
+    atualizarLista()
 })

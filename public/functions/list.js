@@ -1,8 +1,23 @@
+
+
+/*
+const listaItens = [
+  { _id: 1, title: "Item 1", content: "Conteúdo do item 1" },
+  { _id: 2, title: "Item 2", content: "Conteúdo do item 2" },
+  { _id: 3, title: "Item 3", content: "Conteúdo do item 3" },
+  // Adicione mais itens conforme necessário
+];
+
+
+
+
 // Função para desenhar os itens da lista
-function desenharLista(listaItens) {
+function desenharLista() {
+
+  
     const listaContainer = document.getElementById("lista-container");
 
-    listaContainer.innerHTML = ""; // Limpar o conteúdo existente
+    listaContainer.innerHTML = ''; // Limpar o conteúdo existente
 
     listaItens.forEach((item) => {
       // Criar o elemento de item da lista
@@ -111,5 +126,23 @@ function desenharLista(listaItens) {
 
       // Adicionar o modal ao final do corpo do documento
       document.body.appendChild(modalDiv);
+    });
+  }*/
+
+
+  function atualizarLista() {
+    $.ajax({
+      url: '/',
+      method: 'GET',
+      success: function(response) {
+        
+        let parsedResponse = $(response);
+
+        //$('#lista-dados').html(response);
+        $('#lista-dados').html(parsedResponse.find('#lista-dados').html());
+      },
+      error: function(xhr, status, error) {
+        console.error('Erro ao atualizar a lista de dados:', error);
+      }
     });
   }
