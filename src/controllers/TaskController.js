@@ -15,7 +15,7 @@ class TaskController{
         }
     }
     
-    async store(req,resp){
+    /*async store(req,resp){
         const todoTask = new TodoTask({
             title: req.body.title,
             content: req.body.content
@@ -23,14 +23,10 @@ class TaskController{
         
         try{
             await todoTask.save();
-            //resp.json({message: 'Formulário enviado com sucesso!'})
-            
-            //resp.redirect('/');
             
             const tasks =  await TodoTask.find();
             resp.render('lista-dados', {tasks});
-            //resp.json(tasks)
-            //resp.render("todo.ejs", {todoTasks: tasks});
+           
         } catch(err){
             console.log(err)
             //resp.json({message: 'Deu erro!'})
@@ -38,7 +34,38 @@ class TaskController{
     
         }
         
-    }
+    }*/
+
+    async store(req, resp) {
+        const { title, content } = req.body;
+      
+        // Validação dos campos de entrada
+        /*if (!title || !content) {
+          return resp.status(400).json({ error: 'Campos obrigatórios não fornecidos' });
+        }*/
+      
+        const todoTask = new TodoTask({
+          title: title,
+          content: content
+        });
+      
+        try {
+          // Salva os dados no banco de dados
+          await todoTask.save();
+      
+          // Busca a lista atualizada de tarefas
+          const tasks = await TodoTask.find();
+      
+          // Retorna a lista atualizada como resposta JSON
+          return resp.status(200).json({ tasks });
+        } catch (error) {
+          console.error(error);
+      
+          // Lida com o erro de forma adequada
+          return resp.status(500).json({ error: 'Ocorreu um erro ao salvar os dados' });
+        }
+      }
+      
 
     add(req, res){
         res.render("../views/addTasks.ejs");

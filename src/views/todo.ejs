@@ -8,13 +8,13 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="ModalAdiciona" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+        <div class="modal fade ModalAdiciona" id="ModalAdiciona" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-tarefa">
                 <form id='formAdd' method="POST">
                 <div class="modal-header">
 
-                    <input type="text" placeholder="Título" name="title" required>
+                    <input type="text" placeholder="Título" name="title" id="title" required>
                 
 
                 </div>
@@ -25,7 +25,7 @@
                   
                 </div>
                 <div class="modal-footer">
-                    <button type="submit">Confirm</button>
+                    <button type="submit" id="submitButton">Salvar</button>
                     <a href="/" class="cancel">Cancel</a>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
