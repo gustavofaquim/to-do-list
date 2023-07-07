@@ -32,36 +32,23 @@
 
 
 
-const form = document.getElementById('formDell');
+// Captura o evento de exclusão
+$(document).on('click', '.delete-button', function () {
+    let fileId = $(this).data('id'); // ID do arquivo a ser excluído
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const formData = new FormData(form);
-
-    const filteredData = {
-        title: formData.get('title'),
-        content: formData.get('content')
-    };
-
-    console.log(filteredData);
-
-    fetch('/save', {
-        method: 'POST',
-        body: JSON.stringify(filteredData),
-        headers: {
-            'Content-Type': 'application/json'
-          }
-    })
-    //.then(response => response.json())
-    .then(data => {
-        $('#lista-dados').html(data.html);
-        
-    })
-    .catch(error => {
-        console.error(error);
-    })
-
-    // Chamada inicial para atualizar a lista de dados
-    atualizarLista()
-})
+    console.log(fileId);
+  
+    // Envia a solicitação DELETE para a rota de exclusão
+    $.ajax({
+      url: `/remove/${fileId}`,
+      type: 'DELETE',
+      success: function (response) {
+        console.log(response); // Manipule a resposta recebida aqui
+        // Atualize a listagem de itens no DOM
+        atualizarLista()
+      },
+      error: function (error) {
+        console.error(error); // Manipule o erro aqui
+      }
+    });
+  });

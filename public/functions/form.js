@@ -13,7 +13,7 @@ form.addEventListener('submit', function (event) {
 
     console.log(filteredData);
 
-    fetch('/save', {
+    fetch('/#', {
         method: 'POST',
         body: JSON.stringify(filteredData),
         headers: {

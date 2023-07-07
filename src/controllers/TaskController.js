@@ -60,16 +60,16 @@ class TaskController{
         )
     }
 
-    delete(req, res){
-        console.log('Entrou aquiiiii')
-        const id = req.body.title;
-
-        TodoTask.findOneAndRemove({_id: id})
-        .then(
-            () => res.redirect('/'),
-            err => res.send(500,err)
-        )
-    } 
+    delete(req, res) {
+        console.log('Entrou aquiiiii');
+        const id = req.params.id; // Use req.params.id para acessar o ID fornecido na rota
+      
+        TodoTask.findOneAndRemove({ _id: id })
+          .then(
+            () => res.json({ message: 'Arquivo excluído com sucesso' }),
+            err => res.status(500).json({ error: err })
+          );
+    }
 }
 
 // padrão Singleton

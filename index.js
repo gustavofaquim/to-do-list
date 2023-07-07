@@ -52,7 +52,7 @@ app
 //app.get('/edit/:id', TaskController.edit)
 //app.put('/edit/:id', TaskController.update)
 //app.delete('/remove/:id', TaskController.delete) -> chamando assim não funciona
-app.post('/remove', TaskController.delete)
+app.delete('/remove/:id', TaskController.delete)
 
 
 
