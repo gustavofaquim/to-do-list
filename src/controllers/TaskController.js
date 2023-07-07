@@ -61,6 +61,7 @@ class TaskController{
     }
 
     delete(req, res){
+        console.log('Entrou aquiiiii')
         const id = req.body.title;
 
         TodoTask.findOneAndRemove({_id: id})
