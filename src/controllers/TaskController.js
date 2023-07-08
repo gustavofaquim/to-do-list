@@ -40,30 +40,34 @@ class TaskController{
         const { title, content } = req.body;
       
         // Validação dos campos de entrada
-        /*if (!title || !content) {
-          return resp.status(400).json({ error: 'Campos obrigatórios não fornecidos' });
-        }*/
-      
-        const todoTask = new TodoTask({
-          title: title,
-          content: content
-        });
-      
-        try {
-          // Salva os dados no banco de dados
-          await todoTask.save();
-      
-          // Busca a lista atualizada de tarefas
-          const tasks = await TodoTask.find();
-      
-          // Retorna a lista atualizada como resposta JSON
-          return resp.status(200).json({ tasks });
-        } catch (error) {
-          console.error(error);
-      
-          // Lida com o erro de forma adequada
-          return resp.status(500).json({ error: 'Ocorreu um erro ao salvar os dados' });
+        if (title || content) {
+          
+          const todoTask = new TodoTask({
+            ...(title && { title }),
+            ...(content && { content })
+          });    
+
+
+          try {
+            // Salva os dados no banco de dados
+            await todoTask.save();
+        
+            // Busca a lista atualizada de tarefas
+            const tasks = await TodoTask.find();
+        
+            // Retorna a lista atualizada como resposta JSON
+            return resp.status(200).json({ tasks });
+          } catch (error) {
+            console.error(error);
+        
+            // Lida com o erro de forma adequada
+            return resp.status(500).json({ error: 'Ocorreu um erro ao salvar os dados' });
+          }
         }
+      
+      
+      
+        
       }
       
 

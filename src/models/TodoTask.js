@@ -5,11 +5,11 @@ const todoTaskSchema = new mongoose.Schema(
 {
     title:{
         type: String,
-        required: true
+        required: false
     },
     content: {
         type: String,
-        required: true
+        required: false
     },
     date: {
         type: Date,

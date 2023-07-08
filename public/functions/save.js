@@ -28,17 +28,50 @@
     });
   });*/
 
+// Variável para indicar se o modal está aberto
+let isModalOpen = false;
 
+// Captura o evento de clique no botão "Abrir Modal"
+$('#openModalButton').on('click', function () {
+  isModalOpen = true;
+  
+});
+
+// Captura o evento de clique no botão "Cancelar" ou quando o modal é fechado
+$('#cancelButton, .modal').on('click', function () {
+  isModalOpen = false;
+});
+  
   
 // Captura o evento de clique no documento
 $(document).on('click', function (event) {
-    const modal = $('.ModalAdiciona'); // Seletor do modal
+  
+    const modal = $('.modal'); // Seletor do modal
     const form = $('#formAdd'); // Seletor do formulário
   
+
+    
+    console.log(isModalOpen)
+    console.log($('#title').val() != '')
+    console.log(modal.is(event.target))
+    console.log(modal.has(event.target).length)
+
+     
+    const title = $('#title').val();
+    const content = $('#content').val();
+
+
+    if (!title && !content) {
+      return; // Sai da função para evitar o envio do formulário
+    }
+
     // Verifica se o clique ocorreu fora do modal e se o formulário possui dados preenchidos
-    if (!modal.is(event.target) && modal.has(event.target).length === 0 && form.has(':input').length) {
-        const title = $('#title').val();
-        const content = $('#content').val();
+    if (!isModalOpen && modal.is(event.target)) {
+      
+      
+      console.log('Entrou na validação')
+      event.preventDefault(); // Impede o comportamento padrão de fechar o modal  
+     
   
       // Envia a solicitação POST para a rota de armazenamento
       $.ajax({
@@ -50,14 +83,20 @@ $(document).on('click', function (event) {
         },
         success: function (response) {
           console.log(response); // Manipule a resposta recebida aqui
+
+            // Limpar o formulário
+            form[0].reset();
+
+         
   
           // Atualize a listagem de itens no DOM com os dados atualizados
-          // Você pode usar o response.tasks para obter a lista de tarefas atualizada
+          atualizarLista()
         },
         error: function (error) {
           console.error(error); // Manipule o erro aqui
         }
       });
     }
-});
   
+});
+
