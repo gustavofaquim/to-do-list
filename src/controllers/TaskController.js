@@ -38,6 +38,7 @@ class TaskController{
 
     async store(req, resp) {
         const { title, content } = req.body;
+
       
         // Validação dos campos de entrada
         if (title || content) {
@@ -104,7 +105,6 @@ class TaskController{
     
 
     delete(req, res) {
-        console.log('Entrou aquiiiii');
         const id = req.params.id; // Use req.params.id para acessar o ID fornecido na rota
       
         TodoTask.findOneAndRemove({ _id: id })

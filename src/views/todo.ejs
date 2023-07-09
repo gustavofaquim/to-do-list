@@ -14,9 +14,12 @@
                             <input type="text" placeholder="Título" name="title" id="title" required>
                         </div>
                         <div class="modal-body">
-                            <textarea name="content" id="content" placeholder="Conteúdo"></textarea>
+                           <!-- <div name="content" id="content"></div> editor de texto Quill -->
+                            <textarea name="content" id="content" placeholder="Conteúdo"></textarea> 
                         </div>
                         <div class="modal-footer">
+                            <!-- Inserir aqui seletor de cor-->                                
+                           
                             <button type="submit" id="submitButton"></button>
                            
                         </div>
@@ -42,7 +45,7 @@
 
                                 <div class="lista-item-titulo"><%= details.title %></div>
                             
-                                <div class="card-item-customizado">
+                                <div class="card-item-customizado" style="background-color: <%=details.color%> !important;">
                                 
                         
                                     <div class="lista-item-conteudo">  
@@ -71,7 +74,7 @@
                     <!-- Modal -->
                     <div class="modal fade " id="ModalTarefa-<%= details._id %>" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content modal-tarefa">
+                        <div class="modal-content modal-tarefa" ></div>>
                             
                             <form id='formUpdate-<%= details._id %>' data-id="<%= details._id %>" method="PUT">
                             
@@ -98,6 +101,23 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        var quill = new Quill('#content', {
+        theme: 'snow', // 'snow' é um tema pré-construído, mas você pode personalizá-lo conforme necessário
+        modules: {
+            toolbar: [
+            ['bold', 'italic', 'underline', 'strike'], // opções de formatação
+            //['link', 'image', 'video'], // outros recursos, como adicionar links, imagens e vídeos
+            ]
+        }
+        });
+
+
+
+    </script>
+
     <script src="/static/functions/list.js"></script>
     
 <%- include('template/footer'); %>

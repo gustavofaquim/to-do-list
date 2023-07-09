@@ -22,6 +22,8 @@ $(document).on('click', function (event) {
      
     const title = $('#title').val();
     const content = $('#content').val();
+    //var content = quill.getContents(); //Está dando um erro ao salvar os dados do editor...
+    
 
 
     if (!title && !content) {
