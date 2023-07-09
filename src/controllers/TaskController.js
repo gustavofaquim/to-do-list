@@ -1,5 +1,6 @@
 //models
 import TodoTask from '../models/TodoTask.js'
+import Colors from '../models/Colors.js'
 
 
 class TaskController{
@@ -9,7 +10,8 @@ class TaskController{
        
         try{
             const tasks =  await TodoTask.find();
-            res.render("todo.ejs", {todoTasks: tasks, });
+            const colors =  await Colors.find();
+            res.render("todo.ejs", {todoTasks: tasks, colors: colors });
         } catch (err){
             res.status(500).json(err)
         }
@@ -37,7 +39,7 @@ class TaskController{
     }*/
 
     async store(req, resp) {
-        const { title, content } = req.body;
+        const { title, content, color } = req.body;
 
       
         // Validação dos campos de entrada
@@ -45,7 +47,8 @@ class TaskController{
           
           const todoTask = new TodoTask({
             ...(title && { title }),
-            ...(content && { content })
+            ...(content && { content }),
+            ...(content && { color })
           });    
 
 
@@ -72,8 +75,18 @@ class TaskController{
       }
       
 
-    add(req, res){
-        res.render("../views/addTasks.ejs");
+    async add(req, res){
+
+       try{
+            const colors =  await Colors.find();
+            res.render("../views/addTasks.ejs", {colors: colors });
+
+        } catch (err){
+            res.status(500).json(err)
+        }
+        
+        
+        //res.render("../views/addTasks.ejs");
     }
 
     async edit(req,res) {

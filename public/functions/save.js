@@ -12,7 +12,16 @@ $('#openModalButton').on('click', function () {
 $('#cancelButton, .modal').on('click', function () {
   isModalOpen = false;
 });
+
+// Variável para armazenar a cor selecionada
+let color = '';
   
+$('.color').on('click', function() {
+  color = $(this).val();
+  color = JSON.parse(color);
+
+  $('.modal-content').removeClass().addClass('modal-content modal-tarefa color-' + color.name);
+});
   
 // Captura o evento de clique no documento
 $(document).on('click', function (event) {
@@ -24,8 +33,7 @@ $(document).on('click', function (event) {
     const content = $('#content').val();
     //var content = quill.getContents(); //Está dando um erro ao salvar os dados do editor...
     
-
-
+   
     if (!title && !content) {
       return; // Sai da função para evitar o envio do formulário
     }
@@ -44,7 +52,8 @@ $(document).on('click', function (event) {
         type: 'POST',
         data: {
           title: title,
-          content: content
+          content: content,
+          color: color.code
         },
         success: function (response) {
           console.log(response); // Manipule a resposta recebida aqui
