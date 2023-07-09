@@ -48,7 +48,7 @@ app.post('/save', TaskController.store)
 app
     .route('/edit/:id')
     .get( TaskController.edit)
-    .post(TaskController.update)
+    .put(TaskController.update)
 //app.get('/edit/:id', TaskController.edit)
 //app.put('/edit/:id', TaskController.update)
 //app.delete('/remove/:id', TaskController.delete) -> chamando assim não funciona

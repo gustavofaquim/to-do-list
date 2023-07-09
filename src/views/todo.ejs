@@ -17,11 +17,8 @@
                             <textarea name="content" id="content" placeholder="Conteúdo"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="submitButton">Salvar</button>
-                            <a href="/" class="cancel">Cancelar</a>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <button type="submit" id="submitButton"></button>
+                           
                         </div>
                     </form>
                 </div>
@@ -39,54 +36,60 @@
                     <% todoTasks.forEach(details => { %>
                     <div class="lista-item" id='lista-item'>
                         
-                        <div class="lista-item-corpo">
-                            <div class="lista-item-titulo"><%= details.title %></div>
-                        
-                            <div class="card-item-customizado">
-                                <div class="lista-item-conteudo" data-toggle="modal" data-target="#ModalTarefa-<%= details._id %>"><%= details.content %>
-                                </div>
+                        <a class='openModalUpdateButton' data-id='<%= details._id %>' data-toggle="modal" data-target="#ModalTarefa-<%= details._id %>">
+                            <div class="lista-item-corpo">
                                 
-                                <div class="lista-item-menu btn-group" role="group">
+
+                                <div class="lista-item-titulo"><%= details.title %></div>
+                            
+                                <div class="card-item-customizado">
+                                
+                        
+                                    <div class="lista-item-conteudo">  
+                                        <%= details.content %> 
+                                    </div>
                                     
-                                    <div class="btn-group btn-menu" role="group">
-                                        <a id="btnGroupDrop1"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                <!-- <%= details._id %> -->
-                                            <button class="remove dropdown-item btn-remove delete-button" data-id="<%= details._id %>"> <i class="fa-solid fa-xmark"></i> Excluir</button>
-                                            
+                                    <div class="lista-item-menu btn-group" role="group">
+                                        
+                                        <div class="btn-group btn-menu" role="group">
+                                            <a id="btnGroupDrop1"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                    <!-- <%= details._id %> -->
+                                                <button class="remove dropdown-item btn-remove delete-button" data-id="<%= details._id %>"> <i class="fa-solid fa-xmark"></i> Excluir</button>
+                                                
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>  
-                        </div>                   
+                                </div>  
+                            </div>
+                        </a>                 
                     </div>
 
 
                     <!-- Modal -->
-                    <div class="modal fade" id="ModalTarefa-<%= details._id %>" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                    <div class="modal fade " id="ModalTarefa-<%= details._id %>" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content modal-tarefa">
-                            <form action="/edit/<%= details._id %>" method="POST">
-                            <div class="modal-header">
-        
-                                <input type="text" value="<%= details.title %>" id="id="TituloModalCentralizado"" name="title">
                             
+                            <form id='formUpdate-<%= details._id %>' data-id="<%= details._id %>" method="PUT">
+                            
+                                <div class="modal-header">
+                                    <input type="text" value="<%= details.title %>" name="titleUpdate" id="titleUpdate">
+                                </div>
 
-                            </div>
-                            <div class="modal-body">
-                                <textarea name="content" id="content" > <%= details.content %></textarea>
-                              
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit">Confirm</button>
-                                <a href="/" class="cancel">Cancel</a>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                <div class="modal-body">
+                                    <textarea name="content" id="contentUpdate" name="contentUpdate"> <%= details.content %></textarea>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit"></button>
+                                </div>
+
                             </form>
-                            </div>
+                        
+                            
                         </div>
                         </div>
                     </div>

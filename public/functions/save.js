@@ -1,32 +1,3 @@
-// Captura o evento de envio do formulário
-/*$('#formAdd').on('submit', function (event) {
-    event.preventDefault();
-    alert('Olá mundo')
-  
-    const title = $('#title').val();
-    const content = $('#content').val();
-  
-    // Envia a solicitação POST para a rota de armazenamento
-    $.ajax({
-      url: '/save',
-      type: 'POST',
-      data: {
-        title: title,
-        content: content
-      },
-      success: function (response) {
-        console.log(response); // Manipule a resposta recebida aqui
-  
-        // Atualize a listagem de itens no DOM com os dados atualizados
-        // Você pode usar o response.tasks para obter a lista de tarefas atualizada
-
-        atualizarLista()
-      },
-      error: function (error) {
-        console.error(error); // Manipule o erro aqui
-      }
-    });
-  });*/
 
 // Variável para indicar se o modal está aberto
 let isModalOpen = false;
@@ -48,14 +19,6 @@ $(document).on('click', function (event) {
   
     const modal = $('.modal'); // Seletor do modal
     const form = $('#formAdd'); // Seletor do formulário
-  
-
-    
-    console.log(isModalOpen)
-    console.log($('#title').val() != '')
-    console.log(modal.is(event.target))
-    console.log(modal.has(event.target).length)
-
      
     const title = $('#title').val();
     const content = $('#content').val();

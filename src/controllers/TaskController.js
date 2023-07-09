@@ -82,14 +82,26 @@ class TaskController{
         res.render("todoEdit.ejs", {todoTasks, idTask: id});
     }
 
-    async update(req,res){
+    async update(req, resp) {
+      try {
         const id = req.params.id;
-        TodoTask.findByIdAndUpdate(id, {content: req.body.content})
-        .then(
-            () =>  res.redirect("/"),
-            err =>  res.send(500,err)
-        )
+        const { content } = req.body;
+    
+        if (!content) {
+          return resp.status(400).json({ error: 'O campo content é obrigatório.' });
+        }
+    
+        await TodoTask.findByIdAndUpdate(id, { content });
+    
+        // Retorna a lista atualizada como resposta JSON
+        return resp.status(200).json({ success: 'Deu tudo certo ;)' });
+
+      } catch (err) {
+        console.error(err);
+        return resp.status(500).json({ error: 'Deu um problema ao atualizar :(' });
+      }
     }
+    
 
     delete(req, res) {
         console.log('Entrou aquiiiii');
