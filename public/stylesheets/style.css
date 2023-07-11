@@ -168,25 +168,41 @@ body {
 .color-palette{
     text-align: center;
     margin: auto;
+    background-color: #1A1B1D;
+    border-radius: 30px;
+    padding: 10px 20px 0px 20px;
     
 }
 .color{
     display: inline;
     -webkit-appearance: none;
-    padding: 3px;
+   
+    
 }
 
 .color-red{
-    background: #EA2821 !important;
+    background: #b12823 !important;
 }
 
 .color-green{
-    background: #008145 !important;
+    background: #155937 !important;
 }
 
 .color-black{
     background: #202124 !important;
 }
+.color-yellow{
+    background: #afa219 !important; 
+}
+
+.color-blue{
+    background: #0095C6 !important; 
+}
+
+.color-purple{
+    background-color: #42275E !important;
+}
+    
     
     
 
@@ -223,6 +239,7 @@ body {
     width: 100% !important;
     height: 100% !important;
     resize: none !important;
+    min-height: 300px;
 }
 
 .modal-tarefa input:focus, textarea:focus{
