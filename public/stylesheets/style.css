@@ -229,6 +229,7 @@ body {
     border-top:  0px solid !important;
 }
 
+
 .modal-tarefa input, textarea{
     background-color: transparent !important;
     border: 0px solid !important;
@@ -250,6 +251,18 @@ body {
 .lista-item-menu{
     text-align: right;
 }
+
+
+.selecao-cor{
+    width: 250px;
+    text-align: center;
+    margin: auto;
+}
+
+.selecao-cor span{
+    font-size: 10pt;
+}
+
 
 .btn-add{
     color: rgb(236, 234, 234) !important;

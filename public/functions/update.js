@@ -30,13 +30,12 @@ $('.openModalUpdateButton').one('click', function (event) {
     const contentUpdate = formUpdate.find('#contentUpdate').val();
      
     console.log(isModalUpdateOpen)
-    console.log(formUpdate.find('#titleUpdate').val())
     console.log(updateModal.is(event.target))
-    console.log(updateModal.has(event.target).length)
-
-
+    
     // Verifica se o clique ocorreu fora do modal e se o formulário possui dados preenchidos
     if (isModalUpdateOpen && updateModal.is(event.target)) {
+      
+      $('.modal-backdrop').remove(); // Corrige o problema do modal não está fechando corretamente
       
       
       console.log('Entrou na atualização')
@@ -58,8 +57,9 @@ $('.openModalUpdateButton').one('click', function (event) {
 
          
   
-            // Atualize a listagem de itens no DOM com os dados atualizados
-            atualizarLista()
+          // Atualize a listagem de itens no DOM com os dados atualizados
+          atualizarLista()
+            
         },
         error: function (error) {
           console.error(error); // Manipule o erro aqui

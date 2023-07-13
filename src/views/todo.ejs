@@ -19,14 +19,17 @@
                             <textarea name="content" id="content" placeholder="Conteúdo"></textarea> 
                         </div>
                         <div class="modal-footer">
-                            <div class="color-palette">
-                                <% colors.forEach(color => { %>
-                                    
-                                    <input type="radio" id='color-<%=color.code%>' class='color' name='color' value='{"name":"<%=color.name%>", "code":"<%=color.code%>"}'>
-                                    <label for="color-<%=color.code%>" class='label-color' style="background-color: <%=color.code%> !important; border: 0.5px solid <%=color.code%>"></label>
-                                <% }) %>                                
+                            <div class="selecao-cor">
+                                <span>Sua cor favorita em seus lembretes</span>
+                                <div class="color-palette">
+                                    <% colors.forEach(color => { %>
+                                        
+                                        <input type="radio" id='color-<%=color.code%>' class='color' name='color' value='{"name":"<%=color.name%>", "code":"<%=color.code%>"}'>
+                                        <label for="color-<%=color.code%>" class='label-color' style="background-color: <%=color.code%> !important; border: 0.5px solid <%=color.code%>"></label>
+                                    <% }) %>                                
+                                </div>
                             </div>
-                            <!--<button type="submit" id="submitButton"></button>-->
+                            
                            
                         </div>
                     </form>
@@ -78,28 +81,28 @@
 
 
                     <!-- Modal -->
-                    <div class="modal fade " id="ModalTarefa-<%= details._id %>" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal fade" id="ModalTarefa-<%= details._id %>" tabindex="-1" role="dialog"  aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content modal-tarefa" style="background-color: <%=details.color%> !important;">
-                            
-                            <form id='formUpdate-<%= details._id %>' data-id="<%= details._id %>" method="PUT">
-                            
-                                <div class="modal-header">
-                                    <input type="text" value="<%= details.title %>" name="titleUpdate" id="titleUpdate">
-                                </div>
+                            <div class="modal-content modal-tarefa" style="background-color: <%=details.color%> !important;">
+                                
+                                <form id='formUpdate-<%= details._id %>' data-id="<%= details._id %>" method="PUT">
+                                
+                                    <div class="modal-header">
+                                        <input type="text" value="<%= details.title %>" name="titleUpdate" id="titleUpdate">
+                                    </div>
 
-                                <div class="modal-body">
-                                    <textarea name="content" id="contentUpdate" name="contentUpdate"> <%= details.content %></textarea>
-                                </div>
+                                    <div class="modal-body">
+                                        <textarea name="content" id="contentUpdate" name="contentUpdate"> <%= details.content %></textarea>
+                                    </div>
 
-                                <div class="modal-footer">
-                                    <!-- <button type="submit"></button> --> <!-- Descomentar se der merda -->
-                                </div>
+                                    <div class="modal-footer">
+                                        <!-- <button type="submit"></button> --> <!-- Descomentar se der merda -->
+                                    </div>
 
-                            </form>
-                        
+                                </form>
                             
-                        </div>
+                            
+                            </div>
                         </div>
                     </div>
 
