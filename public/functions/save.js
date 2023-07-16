@@ -27,7 +27,7 @@ $('.color').on('click', function() {
 $(document).on('click', function (event) {
   
     const modal = $('.modal'); // Seletor do modal
-    const form = $('#formAdd'); // Seletor do formulário
+    const form = $('#formSave'); // Seletor do formulário
      
     const title = $('#title').val();
     const content = $('#content').val();
