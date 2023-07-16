@@ -173,39 +173,11 @@ body {
     padding: 10px 20px 0px 20px;
     
 }
-.color{
+.color, .color-update, .color-save{
     display: inline;
     -webkit-appearance: none;
    
-    
-}
-
-.color-red{
-    background: #b12823 !important;
-}
-
-.color-green{
-    background: #155937 !important;
-}
-
-.color-black{
-    background: #202124 !important;
-}
-.color-yellow{
-    background: #afa219 !important; 
-}
-
-.color-blue{
-    background: #0095C6 !important; 
-}
-
-.color-purple{
-    background-color: #42275E !important;
-}
-    
-    
-    
-
+}  
 
 .label-color{
     width: 30px;

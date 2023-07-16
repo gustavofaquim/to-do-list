@@ -3,7 +3,7 @@
 let isModalOpen = false;
 
 // Captura o evento de clique no botão "Abrir Modal"
-$('#openModalButton').on('click', function () {
+$('#btnModalSave').on('click', function () {
   isModalOpen = true;
   
 });

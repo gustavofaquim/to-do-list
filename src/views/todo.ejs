@@ -2,13 +2,13 @@
 
     <div class="row">
         <div class="col central-menu">
-            <a href="#" class="btn btn-add" id="openModalButton" data-target="#ModalAdiciona" data-toggle="modal"><i class="fa-solid fa-circle-plus"></i></a>
+            <a href="#" class="btn btn-add" id="btnModalSave" data-target="#ModalAdiciona" data-toggle="modal"><i class="fa-solid fa-circle-plus"></i></a>
         </div>
 
         <!-- Modal -->
         <div class="modal fade" id="ModalAdiciona" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content modal-tarefa color-black">
+                <div class="modal-content modal-tarefa modal-save">
                     <form id="formAdd" action="/save" method="POST">
                         <div class="modal-header">
                             <input type="text" placeholder="Título" name="title" id="title" required>
@@ -24,13 +24,12 @@
                                 <div class="color-palette">
                                     <% colors.forEach(color => { %>
                                         
-                                        <input type="radio" id='color-<%=color.code%>' class='color' name='color' value='{"name":"<%=color.name%>", "code":"<%=color.code%>"}'>
-                                        <label for="color-<%=color.code%>" class='label-color' style="background-color: <%=color.code%> !important; border: 0.5px solid <%=color.code%>"></label>
+                                        <input type="radio" id='color-save-<%=color.code%>' class='color-save'  name='color-save' value='{"name":"<%=color.name%>", "code":"<%=color.code%>"}'>
+                                        <label for="color-save-<%=color.code%>" class='label-color' style="background-color: <%=color.code%> !important; border: 0.5px solid <%=color.code%>"></label>
                                     <% }) %>                                
                                 </div>
                             </div>
                             
-                           
                         </div>
                     </form>
                 </div>
@@ -48,55 +47,61 @@
                     <% todoTasks.forEach(details => { %>
                     <div class="lista-item" id='lista-item'>
                         
-                        <a class='openModalUpdateButton' data-id='<%= details._id %>' data-toggle="modal" data-target="#ModalTarefa-<%= details._id %>">
-                            <div class="lista-item-corpo">
-                                
-
-                                <div class="lista-item-titulo"><%= details.title %></div>
+                       
                             
-                                <div class="card-item-customizado" style="background-color: <%=details.color%> !important;">
-                                
-                        
+                        <div class="lista-item-corpo">
+                            <div class="lista-item-titulo"><%= details.title %></div>
+                            <div class="card-item-customizado" style="background-color: <%=details.color%> !important;">
+                               
+                                <a class='btnModalUpdate'  data-toggle="modal" data-target="#ModalTarefa" data-id='<%= details._id %>' data-color="<%=details.color%> " data-title="<%= details.title %>" data-content="<%= details.content %>">
                                     <div class="lista-item-conteudo">  
                                         <%= details.content %> 
                                     </div>
+                                </a>
+                                
+                                <div class="lista-item-menu btn-group" role="group">
                                     
-                                    <div class="lista-item-menu btn-group" role="group">
-                                        
-                                        <div class="btn-group btn-menu" role="group">
-                                            <a id="btnGroupDrop1"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                    <!-- <%= details._id %> -->
-                                                <button class="remove dropdown-item btn-remove delete-button" data-id="<%= details._id %>"> <i class="fa-solid fa-xmark"></i> Excluir</button>
-                                                
-                                            </div>
+                                    <div class="btn-group btn-menu" role="group">
+                                        <a id="btnGroupDrop1"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <button class="remove dropdown-item btn-remove delete-button" data-id="<%= details._id %>"> <i class="fa-solid fa-xmark"></i> Excluir</button>
                                         </div>
                                     </div>
-                                </div>  
-                            </div>
-                        </a>                 
+                                </div>
+                            </div>  
+                        </div>
+                                         
                     </div>
-
+                    <% }) %>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="ModalTarefa-<%= details._id %>" tabindex="-1" role="dialog"  aria-hidden="true">
+                    <div class="modal fade" id="ModalTarefa" tabindex="-1" role="dialog"  aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content modal-tarefa" style="background-color: <%=details.color%> !important;">
+                            <div class="modal-content modal-tarefa modal-update" >
                                 
-                                <form id='formUpdate-<%= details._id %>' data-id="<%= details._id %>" method="PUT">
+                                <form id='formUpdate' data-id="" method="PUT">
                                 
                                     <div class="modal-header">
-                                        <input type="text" value="<%= details.title %>" name="titleUpdate" id="titleUpdate">
+                                        <input type="text" value="" name="titleUpdate" id="titleUpdate">
                                     </div>
 
                                     <div class="modal-body">
-                                        <textarea name="content" id="contentUpdate" name="contentUpdate"> <%= details.content %></textarea>
+                                        <textarea name="content" id="contentUpdate" name="contentUpdate"></textarea>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <!-- <button type="submit"></button> --> <!-- Descomentar se der merda -->
+                                        <div class="selecao-cor">
+                                            <span>Sua cor favorita em seus lembretes</span>
+                                            <div class="color-palette">
+                                                <% colors.forEach(color => { %>
+                                                    
+                                                    <input type="radio" id='color-update-<%=color.name%>' class='color-update' name='color-update' value='{"name":"<%=color.name%>", "code":"<%=color.code%>"}'>
+                                                    <label for='color-update-<%=color.name%>' class='label-color' style="background-color: <%=color.code%> !important; border: 0.5px solid <%=color.code%>"></label>
+                                                <% }) %>                                
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </form>
@@ -106,7 +111,6 @@
                         </div>
                     </div>
 
-                    <% }) %>
             </div>
         </div>
     </div>

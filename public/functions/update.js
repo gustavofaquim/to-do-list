@@ -4,7 +4,7 @@
 let isModalUpdateOpen = false;
 
 // Captura o evento de clique no botão "Abrir Modal"
-$('.openModalUpdateButton').on('click', function () {
+$('.btnModalUpdate').on('click', function () {
   isModalUpdateOpen = true;
   
 });
@@ -14,9 +14,12 @@ $('#cancelButton, .modalUpdate').on('click', function () {
     isModalUpdateOpen = false;
 });
   
-  
+
+
+
+
 // Captura o evento de clique no documento
-$('.openModalUpdateButton').one('click', function (event) {
+$('.btnModalUpdate').on('click', function (event) {
 
   const id = $(this).data('id')
   console.log(id)
@@ -55,8 +58,6 @@ $('.openModalUpdateButton').one('click', function (event) {
             // Limpar o formulário
             formUpdate[0].reset();
 
-         
-  
           // Atualize a listagem de itens no DOM com os dados atualizados
           atualizarLista()
             
