@@ -99,13 +99,16 @@ class TaskController{
     async update(req, resp) {
       try {
         const id = req.params.id;
+        const { title } = req.body;
         const { content } = req.body;
+        const { color } = req.body;
+        
     
-        if (!content) {
+        if (!content && !title) {
           return resp.status(400).json({ error: 'O campo content é obrigatório.' });
         }
     
-        await TodoTask.findByIdAndUpdate(id, { content });
+        await TodoTask.findByIdAndUpdate(id, {title, content, color });
     
         // Retorna a lista atualizada como resposta JSON
         return resp.status(200).json({ success: 'Deu tudo certo ;)' });

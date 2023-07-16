@@ -73,7 +73,6 @@ $(document).on('click', '#btnModalSave', function (event) {
       }
     }
 
-    
   })
 
 });
@@ -87,7 +86,7 @@ $(document).on('click', '.btnModalUpdate', function (event) {
   const title = button.data('title');
   const content = button.data('content');
   const color = button.data('color');
-  const modal = $('#ModalTarefa'); // Seletor do modal
+  
 
 
   $('#ModalTarefa #titleUpdate').val(title);
@@ -95,7 +94,13 @@ $(document).on('click', '.btnModalUpdate', function (event) {
 
   $('.modal-update').css('background-color', color);
 
-   // Mudanmdo cor do Modal de acordo com seleção do usuário
+
+  // Remover os manipuladores de eventos antigos, impede que a requisição seja enviada mais de uma vez.
+  $(document).off('click', '.color-update');
+  $(document).off('click', '.modal-update-fade');
+
+  let colorSelected; 
+  // Mudanmdo cor do Modal de acordo com seleção do usuário
   $(document).on('click', '.color-update', function(e){
     colorSelected  = $(this).val();
     colorSelected = JSON.parse(colorSelected);
@@ -103,7 +108,53 @@ $(document).on('click', '.btnModalUpdate', function (event) {
   })
   
   $(document).on('click', '.modal-update-fade', function(e){
-   // console.log('Saiu do modal de Update')
+    const formUpdate = $('#formUpdate'); // Seletor do formulário
+    const modal = $('.modal-update-show'); // Seletor do modal
+
+
+    const title = formUpdate.find('#titleUpdate').val();
+    const content = formUpdate.find('#contentUpdate').val();
+    
+    if(!colorSelected){
+      colorSelected = new Object();
+      colorSelected.code = color
+    }
+    
+
+    if(modal.is(e.target)){
+
+      // Sai da função para evitar o envio do formulário
+      if (!title || !content) {
+        return; 
+      }else{
+
+        // Envia a solicitação POST para a rota de armazenamento
+        $.ajax({
+          url: `/edit/${id}`,
+          type: 'put',
+          data: {
+            title: title,
+            content: content,
+            color: colorSelected.code
+          },
+          success: function (response) {
+            console.log(response); // Manipule a resposta recebida aqui
+
+              // Limpar o formulário
+              formUpdate[0].reset();
+
+            // Atualize a listagem de itens no DOM com os dados atualizados
+            atualizarLista()
+              
+          },
+          error: function (error) {
+            console.error(error); // Manipule o erro aqui
+          }
+        });
+
+      }
+    }    
+
   })
 
 
