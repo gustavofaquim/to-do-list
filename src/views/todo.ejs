@@ -76,41 +76,41 @@
                     </div>
                     <% }) %>
 
-                    <!-- Modal -->
-                    <div class="modal fade modal-update-show modal-update-fade" id="ModalTarefa" tabindex="-1" role="dialog"  aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content modal-tarefa modal-update" >
-                                
-                                <form id='formUpdate' data-id="" method="PUT">
-                                
-                                    <div class="modal-header">
-                                        <input type="text" value="" name="titleUpdate" id="titleUpdate">
-                                    </div>
+            </div>
+        </div>
+    </div>
 
-                                    <div class="modal-body">
-                                        <textarea name="content" id="contentUpdate" name="contentUpdate"></textarea>
-                                    </div>
+    <!-- Modal -->
+    <div class="modal fade modal-update-show modal-update-fade" id="ModalTarefa" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-tarefa modal-update" >
+                
+                <form id='formUpdate' data-id="" method="PUT">
+                
+                    <div class="modal-header">
+                        <input type="text" value="" name="titleUpdate" id="titleUpdate">
+                    </div>
 
-                                    <div class="modal-footer">
-                                        <div class="selecao-cor">
-                                            <span>Sua cor favorita em seus lembretes</span>
-                                            <div class="color-palette">
-                                                <% colors.forEach(color => { %>
-                                                    
-                                                    <input type="radio" id='color-update-<%=color.name%>' class='color-update' name='color-update' value='{"name":"<%=color.name%>", "code":"<%=color.code%>"}'>
-                                                    <label for='color-update-<%=color.name%>' class='label-color' style="background-color: <%=color.code%> !important; border: 0.5px solid <%=color.code%>"></label>
-                                                <% }) %>                                
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="modal-body">
+                        <textarea name="content" id="contentUpdate" name="contentUpdate"></textarea>
+                    </div>
 
-                                </form>
-                            
-                            
+                    <div class="modal-footer">
+                        <div class="selecao-cor">
+                            <span>Sua cor favorita em seus lembretes</span>
+                            <div class="color-palette">
+                                <% colors.forEach(color => { %>
+                                    
+                                    <input type="radio" id='color-update-<%=color.name%>' class='color-update' name='color-update' value='{"name":"<%=color.name%>", "code":"<%=color.code%>"}'>
+                                    <label for='color-update-<%=color.name%>' class='label-color' style="background-color: <%=color.code%> !important; border: 0.5px solid <%=color.code%>"></label>
+                                <% }) %>                                
                             </div>
                         </div>
                     </div>
 
+                </form>
+            
+            
             </div>
         </div>
     </div>
