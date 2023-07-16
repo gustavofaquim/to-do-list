@@ -256,3 +256,11 @@ body {
     height: 500px;
     resize: none;
 }
+
+
+
+/* QUILL */
+
+.ql-toolbar.ql-snow, .ql-container.ql-snow, .ql-toolbar{
+    border: 0px solid !important;
+}

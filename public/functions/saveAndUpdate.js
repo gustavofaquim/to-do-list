@@ -34,8 +34,9 @@ $(document).on('click', '#btnModalSave', function (event) {
     const modal = $('.modal-save-show'); // Seletor do modal
 
     const title = formSave.find('#title').val();
-    const content = formSave.find('#content').val();
-  
+    //const content = formSave.find('#content').val();
+    const content = quill.root.innerHTML;
+
 
     if(modal.is(e.target)){
       /*console.log('Titulo: ' + title)
@@ -88,9 +89,12 @@ $(document).on('click', '.btnModalUpdate', function (event) {
   const color = button.data('color');
   
 
-
+  console.log(content)
   $('#ModalTarefa #titleUpdate').val(title);
-  $('#ModalTarefa #contentUpdate').val(content);
+ // $('#ModalTarefa #contentUpdate').val(content);
+  quillUpdate.root.innerHTML = content;
+
+  
 
   $('.modal-update').css('background-color', color);
 
@@ -113,7 +117,8 @@ $(document).on('click', '.btnModalUpdate', function (event) {
 
 
     const title = formUpdate.find('#titleUpdate').val();
-    const content = formUpdate.find('#contentUpdate').val();
+    //const content = formUpdate.find('#contentUpdate').val();
+    const content = quillUpdate.root.innerHTML;
     
     if(!colorSelected){
       colorSelected = new Object();
