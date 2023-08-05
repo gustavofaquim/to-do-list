@@ -1,4 +1,17 @@
 
+/* Em seu arquivo de estilo CSS (styles.css) */
+.download-message {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+
 
 
 
