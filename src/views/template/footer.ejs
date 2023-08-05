@@ -1,13 +1,46 @@
+
+<!-- Dentro do seu arquivo HTML principal (index.html) -->
+
 </div>
 </div>
 
-<!-- Dentro do seu arquivo HTML principal (index.html) -->
 <div id="download-message" class="download-message">
     <p>Instale nosso aplicativo para uma melhor experiência!</p>
     <button id="close-message-button">Fechar</button>
 </div>
-<!-- <script src="/static/functions/save.js"></script>
-<script src="/static/functions/update.js"></script> -->
+
+
+
 <script src="/static/functions/saveAndUpdate.js"></script>
 <script src="/static/functions/delete.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadMessage = document.getElementById('download-message');
+  const closeMessageButton = document.getElementById('close-message-button');
+
+  closeMessageButton.addEventListener('click', () => {
+    downloadMessage.style.display = 'none';
+  });
+
+  // Exibir a mensagem e instruções na primeira visita
+  if (!localStorage.getItem('downloadMessageShown')) {
+    downloadMessage.style.display = 'block';
+    localStorage.setItem('downloadMessageShown', 'true');
+  }
+
+  // Manipulador de evento para o clique na mensagem
+  downloadMessage.addEventListener('click', () => {
+    if (window.confirm('Deseja adicionar um atalho à tela inicial?')) {
+      // Adicionar o PWA à tela inicial
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choiceResult => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('O PWA foi adicionado à tela inicial.');
+        }
+        deferredPrompt = null;
+      });
+    }
+  });
+});
+</script>
 </body>
