@@ -60,7 +60,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <div name="content" id="content"></div> <!-- editor de texto Quill -->
+                        <div name="content" id="content" class="content-edit"></div> <!-- editor de texto Quill -->
                        <!-- <textarea name="content" id="content" placeholder="Conteúdo"></textarea> -->
                     </div>
                     <div class="modal-footer">
@@ -95,7 +95,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <div name="contentUpdate" id="contentUpdate"></div> <!-- editor de texto Quill -->
+                        <div name="contentUpdate" id="contentUpdate" class="content-edit"></div> <!-- editor de texto Quill -->
                         <!-- <textarea name="content" id="contentUpdate" name="contentUpdate"></textarea>  -->
                     </div>
 
@@ -125,8 +125,10 @@
             theme: 'snow', // 'snow' é um tema pré-construído, mas você pode personalizá-lo conforme necessário
             modules: {
                 toolbar: [
-                ['bold', 'italic', 'underline', 'strike'],
+                ['color','bold', 'italic', 'underline', 'strike'],
                 [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }], 
+                [{ 'align': [] }],
                 ['clean'] // opções de formatação
                 //['link', 'image', 'video'], // outros recursos, como adicionar links, imagens e vídeos
                 ]

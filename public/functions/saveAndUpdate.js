@@ -39,11 +39,7 @@ $(document).on('click', '#btnModalSave', function (event) {
 
 
     if(modal.is(e.target)){
-      /*console.log('Titulo: ' + title)
-      console.log('Conteudo: ' + content)
-      console.log('modal fechado: ' + modal.is(e.target))*/
      
-
       // Sai da função para evitar o envio do formulário
       if (!title || !content) {
         return; 
@@ -89,7 +85,7 @@ $(document).on('click', '.btnModalUpdate', function (event) {
   const color = button.data('color');
   
 
-  console.log(content)
+  
   $('#ModalTarefa #titleUpdate').val(title);
  // $('#ModalTarefa #contentUpdate').val(content);
   quillUpdate.root.innerHTML = content;
@@ -164,75 +160,3 @@ $(document).on('click', '.btnModalUpdate', function (event) {
 
 
 });
-
-
-
-
-/*
-
-// Variável para indicar se o modal está aberto
-let isModalOpen = false;
-
-// Captura o evento de clique no botão "Abrir Modal"
-$('#btnModalSave').on('click', function (event) {
-  isModalOpen = true;
-  isModalUpdateOpen = false;
-
-  console.log('Entrou no modal de Save')
-
-  
-});
-
-// Captura o evento de clique no botão "Cancelar" ou quando o modal é fechado
-$('#cancelButton, .modal').on('click', function () {
-  isModalOpen = false;
-});
-
-
-// Variável para indicar se o modal está aberto
-let isModalUpdateOpen = false;
-
-
-$('.btnModalUpdate').on('click', function () {
-    isModalUpdateOpen = true;
-    isModalOpen = false;
-    
-    console.log('Entrou no modal de Update')
-
-  });
-
-// Captura o evento de clique no botão "Cancelar" ou quando o modal é fechado
-$('#cancelButton, .modalUpdate').on('click', function () {
-    isModalUpdateOpen = false;
-});
-  
-
-  
-// Captura o evento de clique no documento
-$(document).on('click', function (event) {
-
-    const modal = $('.modal'); // Seletor do modal
-    const form = $('#formAdd'); // Seletor do formulário
-    const id = $(this).data('id')
-    const updateModal = $('#ModalTarefa-'+id); // Seletor do modal
-    const formUpdate = $('#formUpdate-'+id); // Seletor do formulário
-
-    console.log(' ----- salve -----')
-    console.log(!isModalOpen)
-    console.log(modal.is(event.target))
-    console.log(' ----- update -----')
-    console.log(isModalUpdateOpen)
-    console.log(updateModal.is(event.target))
-    
-    //Saindo do modal Save
-    if(!isModalOpen && modal.is(event.target)){
-        console.log('Saiu do modal de Save')
-    }
-    else if(isModalUpdateOpen && updateModal.is(event.target)){
-        console.log('Saiu do modal de Update')
-    }
-
-
-
-});
-*/

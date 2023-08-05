@@ -145,6 +145,9 @@ body {
 }
 
 
+.lista-item-conteudo li{
+   margin-left: 20px;
+}
 
 .lista-item-titulo{
   font-weight: bold;
@@ -263,4 +266,8 @@ body {
 
 .ql-toolbar.ql-snow, .ql-container.ql-snow, .ql-toolbar{
     border: 0px solid !important;
+}
+
+.content-edit{
+    font-size: 1em !important;
 }
