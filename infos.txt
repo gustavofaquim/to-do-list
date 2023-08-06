@@ -25,3 +25,7 @@ npm init -> iniciar novo projeto com o Node
 https://medium.com/@diogo.fg.pinheiro/simple-to-do-list-app-with-node-js-and-mongodb-chapter-2-3780a1c5b039
 
 https://www.youtube.com/watch?v=sTZ6tTkFjR8
+
+
+
+-->> Tetando fazer ele se comportar como um PWA
